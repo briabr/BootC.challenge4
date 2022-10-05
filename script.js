@@ -23,10 +23,11 @@ function questionDisplay(){
     choice2.textContent = choice2_show;
     choice3.textContent = choice3_show;
 }
-function checkAnswers(event){
-    if (quizQuestions[0].correct === event.target.textContent)
-    //add 10 points else deduct 10 seconds 
-}
+// function checkAnswers(event){
+//     if (quizQuestions[0].correct === event.target.textContent)
+//     //add 10 points else deduct 10 seconds 
+// }
+
 // in general clicklistemner for each button
 // function running through all the questions using for loop 
 // establish score started 
