@@ -1,54 +1,99 @@
-let timer = document.getElementById("timer");
-var clock;
-var secondsLeft;
-let startDiv = document.querySelector(".start_div")
-let startBotton = document.querySelector("#start_button")
-let quizDiv = document.querySelector("#quiz")
-let quizQuestions = [{question: "Arrays in javascript used to store",
-Answers: {A:"strings",
-B:"boolean",
-C: "all the above"}, correct: "all  the above",}];
-var choice1 = document.getElementById("choice1");
-var choice2 = document.getElementById("choice2");
-var choice3 = document.getElementById("choice3");
-var question = document.getElementById("question");
-console.log(quizQuestions)
-function questionDisplay(){
-    var questionShow = quizQuestions[0].question;
-    var choice1_show = quizQuestions[0].Answers.A;
-    var choice2_show = quizQuestions[0].Answers.B;
-    var choice3_show = quizQuestions[0].Answers.C;
-    question.textContent = questionShow
-    choice1.textContent = choice1_show;
-    choice2.textContent = choice2_show;
-    choice3.textContent = choice3_show;
-}
-// function checkAnswers(event){
-//     if (quizQuestions[0].correct === event.target.textContent)
-//     //add 10 points else deduct 10 seconds 
-// }
 
-// in general clicklistemner for each button
-// function running through all the questions using for loop 
-// establish score started 
-// end game function. after the game hide everything and show something else
-// local storage 
 
-startBotton.addEventListener("click", function(event){
+let startButton = document.getElementById('start-button') 
+let nextButton = document.getElementById('next-button')
+var timeLeftElement = document.getElementById("time-left");
+var secondsLeft = 75;   
+let finalScore = 0;
+const questions = [
+    {
+        question: 'Commonly used datatypes DO NOT include',
+        answers: [
+            {text: 'Strings', correct: 'Alerts'},
+            {text: 'Booleans', correct: 'Alerts'},
+            {text: 'Numbers', correct: 'Alerts'},
+            {text: 'Alerts', correct: 'Alerts'}
+        ]
+    },
+
+    {
+                question: 'Arrays in JavaSript can be used to store',
+                answers: [
+                    {text: 'numbers', correct: 'numbers'},
+                    {text: 'other arrays', correct: 'numbers'},
+                    {text: 'elements', correct: 'numbers' },
+                    {text: 'class', correct: 'numbers' }
+                ]
+            },
+
+            {
+                question: 'A very useful tool used during development and debugging for printing content is',
+                answers: [
+                    {text: 'JavaSript', correct: 'JavaSript'},
+                    {text: 'terminal/Bash', correct: 'JavaSript'},
+                    {text: 'for loops', correct: 'JavaSript'},
+                    {text: 'console.log', correct: 'JavaSript'},
+                ]
+
+            }
+                
+            ]
+
+//whenever we click  the button, click on it to execute the code 
+startButton.addEventListener('click', startGame) 
+
+
+function startGame() {
+    console.log('started')
     startTimer();
-    questionDisplay();
-    //call back function,anonymous function
-    startDiv.setAttribute("id","hide")
-    quizDiv.setAttribute("class", "show")
+    displayQuestions() 
+}
+let questionNumber = 0
+function displayQuestions () {
+
+    document.getElementsByClassName('question_div')[0].innerText = ""
+    document.getElementsByClassName('code-quiz')[0].setAttribute('id', 'hide')
+    let question_block = document.getElementsByClassName('question_div')[0]
+    question_block.setAttribute('id', 'show')
+    let parentDiv = document.createElement("div")
+    let questionDiv = document.createElement('div')
+    questionDiv.innerHTML = questions[questionNumber].question
+    let optionDiv = document.createElement('div')
+    optionDiv.style.display = "block"
+    for (let i = 0 ; i < questions[questionNumber].answers.length; i++) {
+        let buttonEl = document.createElement('button')
+        let paragraph = document.createElement('p')
+        buttonEl.innerHTML = questions[questionNumber].answers[i].text
+        buttonEl.addEventListener('click', function(event){
+            event.preventDefault()
+            console.log(event.target.innerHTML)
+            if(event.target.innerHTML === questions[questionNumber].answers[i].correct)
+            {
+                buttonEl.style.backgroundColor = "green"
+                finalScore+=10
+                console.log(`Final Score is ${finalScore}`)
+            }else{
+                buttonEl.style.backgroundColor = "red"
+                secondsLeft -=10
+            }
+        })
+        paragraph.append(buttonEl)
+        optionDiv.append(paragraph)
+    }
+    parentDiv.append(questionDiv,optionDiv)
+    question_block.append(parentDiv)
+}
+nextButton.addEventListener('click', () => {
+   questionNumber++ 
+   displayQuestions()
 })
 
-function startTimer() {
+function startTimer() { // build the start game
     console.log("The timer is started.")
-    var secondsLeft = 60;
-    timer.textContent = secondsLeft;
+    timeLeftElement.textContent = secondsLeft;
     var timerInterval = setInterval(function() {
         // count down by 1
-        timer.textContent = --secondsLeft;
+        timeLeftElement.textContent = --secondsLeft;
         // we are out of time 
         if (secondsLeft === 0){
          //stop the timer
@@ -56,4 +101,3 @@ function startTimer() {
         }
     }, 1000)
 }
-

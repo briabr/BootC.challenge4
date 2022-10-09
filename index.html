@@ -4,39 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+    <title>Quiz Assessment</title>
+
 </head>
 <body>
-    <div class="start_div show">
-        <p>Get Started</p>
-        <button id="start_button">Start</button>
-        <!-- Info Box -->
-        <div class="Info_box">
-            <div class="Info_title">
-                <span> Some Rules of this Quiz</span>
+    <header>
+        <div class="code-quiz">
+            <h1 class="quiz">Coding Quiz Challenge</h1>
+            <p id="quiz-challenge">Answer the quiz questions within the time limit. There will be penalty for incorrect answer by deducting 10sec!</p>
+        </div>
+    </header>
+
+    <div id="hide" class="question_div">
+        listofQuestions
+    </div>
+
+        </div> 
+        <div class="start-next-button">
+            <button id="start-button" class="start-btn btn">Start</button>
+            <button id="next-button" class="start-btn hide">Next</button>
+        </div>
+
+        <div id="timer">
+            <h2>Time Left</h2>
+            <div id="time-left">75</div>
             </div>
-            <div class="Info_list">
-                <div class="info">1. You have 60sec to finish the Quiz</div>
-                <div class="info">2. You can choose one answer choice</div>
-                <div class="info">3. You are presented with another question after answering a question</div>
-                <div class="info">4. 10 seconds substracted for each incorrect question</div>
-                <div class="info">5. The game is over when the timer reaches zero</div>
-            </div>
-            <button class="quit">Exit Quiz</button>
-            <button class="restart">Continue</button>
 
         </div>
-        
-    </div>
-    <div id="quiz">
-<h1 id="question"></h1>
-<button id="choice1"></button>
-<button id="choice2"></button>
-<button id="choice3"></button>
- </div>
- <div id="timer">Timer</div>
- 
-    <script src="./script.js"></script>
-</body>
-</html>
+        <script src="script.js"></script>
+    </body>
+    </html>
+
+
+
+
