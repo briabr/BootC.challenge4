@@ -2,9 +2,14 @@
 
 ## Description
 ```
-Build a timed coding quiz with multiple-choice questions.
+Build a timed coding quiz with multiple-choice questions featuring dynamically updated HTML and CSS powered by JavaScript code. 
 ```
-
+## User Story 
+```
+AS A coding boot camp student
+I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+SO THAT I can gauge my progress compared to my peers
+```
 ## Acceptance Criteria
 ```
 GIVEN I am taking a code quiz
@@ -21,4 +26,10 @@ THEN I can save my initials and score
 ```
 Screen shot
 ![image](https://user-images.githubusercontent.com/35021142/194732257-ed8d7343-271f-4665-adca-74d0c859bb0d.png)
+
+## GitHub Repo
+https://github.com/briabr/Web-APIs-Challenge.Code-Quiz
+
+## Deployment Link
+https://briabr.github.io/Web-APIs-Challenge.Code-Quiz/
 
